@@ -9,7 +9,8 @@
 import UIKit
 
 class LoginVC: UIViewController {
-    
+    let appDel = UIApplication.shared.delegate as? AppDelegate
+
  
     @IBOutlet weak var pwTfield: UITextField!
     @IBOutlet weak var unameTfield: UITextField!
@@ -48,32 +49,77 @@ class LoginVC: UIViewController {
         if Reachability.isConnectedToNetwork(){
 
             present(alert, animated: true, completion: nil)
-           
-            AuthService.instance.login(email: unameTfield.text!, pass: pwTfield.text!) { (status) in
-                if(status){
-                    DispatchQueue.main.async {
-                        AuthService.instance.checkLogin(email: self.unameTfield.text!, pass: self.pwTfield.text!, handler: { (status2) in
-                            if(status2){
-                                DispatchQueue.main.async {
-                                    self.pwTfield.resignFirstResponder()
-                                    self.unameTfield.resignFirstResponder()
-                                    self.alert.dismiss(animated: true, completion: {
-                                        self.dismiss(animated: true, completion: nil)
-                                    })
+            guard let managedContext = appDel?.persistentContainer.viewContext else {return}
+                        AuthService.instance.login(email: self.unameTfield.text!, pass: self.pwTfield.text!, handler: { (status2) in
+                            if(status2[0] == "0" || status2[0] == "-1"){
+                                
+                                DispatchQueue.main.sync {
+                                    self.alert.dismiss(animated: true, completion: nil)
+                                    let alert2 = UIAlertController(title: "Sorry! 😢", message: "There was an error signing you in. Please check your connection and try again.", preferredStyle: .alert)
+                                    
+                                    alert2.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
+                                        print("OK")
+                                    }))
+                                    self.present(alert2, animated: true, completion: nil)
                                 }
                                 
-                               
+                                
                             }else{
+                                if(status2[0] == "wrongpw"){
+                                    
+                                    DispatchQueue.main.sync {
+                                        self.alert.dismiss(animated: true, completion: nil)
+                                        
+                                        let alert2 = UIAlertController(title: "Oops... 😳", message: "Sorry, the password you have entered is invalid. Please try again.", preferredStyle: .alert)
+                                        
+                                        alert2.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
+                                            print("OK")
+                                        }))
+                                        self.present(alert2, animated: true, completion: nil)
+                                    }
+                                    
+                                }else if(status2[0] == "failed"){
+                                    
+                                    DispatchQueue.main.sync {
+                                        self.pwTfield.resignFirstResponder()
+                                        self.unameTfield.resignFirstResponder()
+                                        self.alert.dismiss(animated: true, completion:nil)
+                                        
+                                        let alert2 = UIAlertController(title: "Uh-oh... 😧", message: "Sorry, we can't find that username. Have you signed up?", preferredStyle: .alert)
+                                        
+                                        alert2.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
+                                            print("OK")
+                                        }))
+                                        self.present(alert2, animated: true, completion: nil)
+                                    }
+                                    
+                                }else if(status2[0] == "success"){
+                                    let user = SessionStore(context: managedContext)
+                                    user.username = self.unameTfield.text!
+                                    guard let session  = Int32(status2[1]) else {return}
+                                    user.session = session
+                                    
+                                    do{
+                                        try managedContext.save()
+                                    }catch{
+                                        print("Error saving sesh:: \(error.localizedDescription)")
+                                    }
+                                    
+                                    DispatchQueue.main.async {
+                                        self.pwTfield.resignFirstResponder()
+                                        self.unameTfield.resignFirstResponder()
+                                        self.alert.dismiss(animated: true, completion: {
+                                            self.dismiss(animated: true, completion: nil)
+                                        })
+                                    }
+                                }
+                                
                                 print("AAAXX")
                             }
                         })
-                    }
-                }else{
-                    print("GGGG")
-                }
-            }
+                    
         }else{
-            print("No internet connection detected")
+            print("No internet connection detected") // todo
         }
         
         

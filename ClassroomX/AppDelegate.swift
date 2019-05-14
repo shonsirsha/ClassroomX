@@ -17,10 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let loginVC = storyBoard.instantiateViewController(withIdentifier: "loginVC")
-        window?.makeKeyAndVisible()
-        window?.rootViewController?.present(loginVC, animated: true, completion: nil)
+        AuthService.instance.fetchSeshLocal { (status) in
+            if(status){
+                if(sessionDetail.count < 1){
+                    let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let loginVC = storyBoard.instantiateViewController(withIdentifier: "loginVC")
+                    self.window?.makeKeyAndVisible()
+                    self.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
+
+                }else{
+                    //automatically displays the mainvc
+                }
+            }else{
+                print("Error WOWOW")
+            }
+        }
+      
         
         return true
     }

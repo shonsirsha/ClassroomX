@@ -48,6 +48,7 @@
 		B5CB93DA22871C7700F5643E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB93D922871C7700F5643E /* AuthService.swift */; };
 		B5CB93DC228725DB00F5643E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB93DB228725DB00F5643E /* Reachability.swift */; };
 		B5CB93DE22872AD200F5643E /* AuthJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB93DD22872AD200F5643E /* AuthJSON.swift */; };
+		B5CB93E0228B080800F5643E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB93DF228B080800F5643E /* MainVC.swift */; };
 		B5EE0E432286E9EF00672EEA /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0E422286E9EF00672EEA /* LoginVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		B5CB93D922871C7700F5643E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B5CB93DB228725DB00F5643E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		B5CB93DD22872AD200F5643E /* AuthJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthJSON.swift; sourceTree = "<group>"; };
+		B5CB93DF228B080800F5643E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		B5EE0E422286E9EF00672EEA /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				B500395E22846F6600849ABF /* ViewController.swift */,
+				B5CB93DF228B080800F5643E /* MainVC.swift */,
 				B5EE0E422286E9EF00672EEA /* LoginVC.swift */,
 			);
 			path = Controller;
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B599569722849B35004090A0 /* Sys.swift in Sources */,
+				B5CB93E0228B080800F5643E /* MainVC.swift in Sources */,
 				B5995695228492B4004090A0 /* RoundedBtn.swift in Sources */,
 				B5EE0E432286E9EF00672EEA /* LoginVC.swift in Sources */,
 				B500396522846F6600849ABF /* ClassroomX.xcdatamodeld in Sources */,

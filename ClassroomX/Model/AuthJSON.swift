@@ -12,3 +12,8 @@ struct StatusLoggedIn: Decodable{
     let sessionUID: Int?
     let status: String?
 }
+
+struct SessionStatus: Decodable{
+    let status: Int?
+}
+
