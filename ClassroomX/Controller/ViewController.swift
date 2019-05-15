@@ -18,6 +18,13 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        if(sentShowHelloVCWhenDismissed){
+            performSegue(withIdentifier: "goToLogin", sender: self)
+        }else{
+            print("NOT SHOWING")
+        }
+       
        
     }
     

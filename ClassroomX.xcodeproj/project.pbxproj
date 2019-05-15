@@ -49,6 +49,7 @@
 		B5CB93DC228725DB00F5643E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB93DB228725DB00F5643E /* Reachability.swift */; };
 		B5CB93DE22872AD200F5643E /* AuthJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB93DD22872AD200F5643E /* AuthJSON.swift */; };
 		B5CB93E0228B080800F5643E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB93DF228B080800F5643E /* MainVC.swift */; };
+		B5CB93E2228C063F00F5643E /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB93E1228C063E00F5643E /* StartVC.swift */; };
 		B5EE0E432286E9EF00672EEA /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE0E422286E9EF00672EEA /* LoginVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		B5CB93DB228725DB00F5643E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		B5CB93DD22872AD200F5643E /* AuthJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthJSON.swift; sourceTree = "<group>"; };
 		B5CB93DF228B080800F5643E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		B5CB93E1228C063E00F5643E /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		B5EE0E422286E9EF00672EEA /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +208,7 @@
 			children = (
 				B500395E22846F6600849ABF /* ViewController.swift */,
 				B5CB93DF228B080800F5643E /* MainVC.swift */,
+				B5CB93E1228C063E00F5643E /* StartVC.swift */,
 				B5EE0E422286E9EF00672EEA /* LoginVC.swift */,
 			);
 			path = Controller;
@@ -335,6 +338,7 @@
 				B500395F22846F6600849ABF /* ViewController.swift in Sources */,
 				B500395D22846F6600849ABF /* AppDelegate.swift in Sources */,
 				B5CB93DE22872AD200F5643E /* AuthJSON.swift in Sources */,
+				B5CB93E2228C063F00F5643E /* StartVC.swift in Sources */,
 				B5CB93DC228725DB00F5643E /* Reachability.swift in Sources */,
 				B5CB93DA22871C7700F5643E /* AuthService.swift in Sources */,
 			);

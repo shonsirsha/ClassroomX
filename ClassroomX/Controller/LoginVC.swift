@@ -21,7 +21,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        sentShowHelloVCWhenDismissed = false
         if Reachability.isConnectedToNetwork(){
             
         }else{
@@ -47,6 +47,9 @@ class LoginVC: UIViewController {
     @IBAction func loginBtn(_ sender: Any) {
         
         if Reachability.isConnectedToNetwork(){
+            
+            self.pwTfield.resignFirstResponder()
+            self.unameTfield.resignFirstResponder()
 
             present(alert, animated: true, completion: nil)
             guard let managedContext = appDel?.persistentContainer.viewContext else {return}
@@ -69,20 +72,19 @@ class LoginVC: UIViewController {
                                     
                                     DispatchQueue.main.sync {
                                         self.alert.dismiss(animated: true, completion: nil)
-                                        
                                         let alert2 = UIAlertController(title: "Oops... 😳", message: "Sorry, the password you have entered is invalid. Please try again.", preferredStyle: .alert)
                                         
                                         alert2.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
                                             print("OK")
                                         }))
                                         self.present(alert2, animated: true, completion: nil)
+                                        self.pwTfield.becomeFirstResponder()
+
                                     }
                                     
                                 }else if(status2[0] == "failed"){
                                     
                                     DispatchQueue.main.sync {
-                                        self.pwTfield.resignFirstResponder()
-                                        self.unameTfield.resignFirstResponder()
                                         self.alert.dismiss(animated: true, completion:nil)
                                         
                                         let alert2 = UIAlertController(title: "Uh-oh... 😧", message: "Sorry, we can't find that username. Have you signed up?", preferredStyle: .alert)
@@ -91,11 +93,15 @@ class LoginVC: UIViewController {
                                             print("OK")
                                         }))
                                         self.present(alert2, animated: true, completion: nil)
+                                        self.unameTfield.becomeFirstResponder()
                                     }
                                     
                                 }else if(status2[0] == "success"){
                                     let user = SessionStore(context: managedContext)
-                                    user.username = self.unameTfield.text!
+                                    DispatchQueue.main.async {
+                                        user.username = self.unameTfield.text!
+
+                                    }
                                     guard let session  = Int32(status2[1]) else {return}
                                     user.session = session
                                     
@@ -106,10 +112,9 @@ class LoginVC: UIViewController {
                                     }
                                     
                                     DispatchQueue.main.async {
-                                        self.pwTfield.resignFirstResponder()
-                                        self.unameTfield.resignFirstResponder()
+                                   
                                         self.alert.dismiss(animated: true, completion: {
-                                            self.dismiss(animated: true, completion: nil)
+                                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                                         })
                                     }
                                 }
@@ -119,7 +124,12 @@ class LoginVC: UIViewController {
                         })
                     
         }else{
-            print("No internet connection detected") // todo
+            let alert2 = UIAlertController(title: "No Connection 😴", message: "No internet connection. Connect your device to the internet and try again.", preferredStyle: .alert)
+            
+            alert2.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
+                print("OK")
+            }))
+            self.present(alert2, animated: true, completion: nil)
         }
         
         

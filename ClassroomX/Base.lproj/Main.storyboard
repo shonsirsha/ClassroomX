@@ -24,7 +24,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ClassroomX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="helloVC" id="BYZ-38-t0r" customClass="ViewController" customModule="ClassroomX" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="Z4Q-6V-Ym5" kind="presentation" id="DmK-to-lwn"/>
+                                            <segue destination="Z4Q-6V-Ym5" kind="presentation" identifier="goToLogin" id="DmK-to-lwn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -77,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="134"/>
+            <point key="canvasLocation" x="321" y="326"/>
         </scene>
         <!--Sign In-->
         <scene sceneID="aaB-2c-zjv">
@@ -224,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRr-iN-Wdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823" y="134"/>
+            <point key="canvasLocation" x="1466" y="134"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="oqQ-mg-SLX">
@@ -240,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eiW-NO-mz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="-724"/>
+            <point key="canvasLocation" x="1986" y="-724"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lnv-uN-cGG">
@@ -272,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vz2-TY-BdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1374" y="-723"/>
+            <point key="canvasLocation" x="1311" y="-723"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QVd-oi-OFT">
@@ -293,10 +293,10 @@
             </objects>
             <point key="canvasLocation" x="630" y="-722"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--StartVC-->
         <scene sceneID="HLz-AZ-CjD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WtY-Rq-cj9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StartVC" automaticallyAdjustsScrollViewInsets="NO" id="WtY-Rq-cj9" customClass="StartVC" customModule="ClassroomX" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iht-MB-BQ6">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -304,15 +304,18 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="XCy-Zf-Vcr"/>
+                        <segue destination="Z4Q-6V-Ym5" kind="show" identifier="toLoginVc2" id="Rba-e8-Efl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCW-nl-RcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="134"/>
+            <point key="canvasLocation" x="-284" y="-2"/>
         </scene>
     </scenes>
     <resources>
         <image name="icons8-multiply-filled-100" width="75" height="75"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DmK-to-lwn"/>
+    </inferredMetricsTieBreakers>
 </document>

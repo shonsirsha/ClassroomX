@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+var sentShowHelloVCWhenDismissed = false
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,10 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AuthService.instance.fetchSeshLocal { (status) in
             if(status){
                 if(sessionDetail.count < 1){
+                    sentShowHelloVCWhenDismissed = true
                     let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                    let loginVC = storyBoard.instantiateViewController(withIdentifier: "loginVC")
+                    let helloVC = storyBoard.instantiateViewController(withIdentifier: "helloVC")
                     self.window?.makeKeyAndVisible()
-                    self.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
+                    self.window?.rootViewController?.present(helloVC, animated: true, completion: nil)
 
                 }else{
                     //automatically displays the mainvc
